@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+
+  tasks:
+  - name: TCP config
+    lineinfile:
+      path: /etc/hosts.deny
+      search_string: 'sshd:'
+      line: 'sshd: ALL'
+      search_string: 'ALL:'
+      line: 'ALL: ALL'
+    lineinfile:
+      path: /etc/hosts.allow
+      search_string: 'sshd:'
+      line: 'sshd: 192.168.1.1, LOCAL'
